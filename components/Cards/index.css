@@ -1,0 +1,15 @@
+.agregar {
+    transition: all .3s ease-in-out;
+}
+
+.agregar:hover {
+    box-shadow: 0 0 18px #000000a9;
+}
+
+.ver {
+    transition: all .3s ease-in-out;
+}
+
+.ver:hover {
+    box-shadow: 0 0 18px #000000a9;
+}
