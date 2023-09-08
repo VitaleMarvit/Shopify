@@ -1,0 +1,17 @@
+.detail {
+    width: 20vw;
+    height: auto;
+}
+
+.x {
+    transition: all .3s ease-in-out;
+    width: 16px;
+    height: 16px;
+    padding: 4px;
+    border-radius: 50%;
+}
+
+.x:hover {
+    background-color: black;
+    color: white;
+}
