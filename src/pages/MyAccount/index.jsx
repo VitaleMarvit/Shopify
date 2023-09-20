@@ -1,6 +1,8 @@
 import { useContext, useRef, useState } from "react"
 import { ShoppingCartContext } from "../../Context"
 import { Layout } from "../../components/Layout"
+import { Link } from 'react-router-dom'
+import { OrdersCard } from "../../components/OrdersCard";
 
 function MyAccount() {
     const context = useContext(ShoppingCartContext)
@@ -23,14 +25,14 @@ function MyAccount() {
 
     const renderUserInfo = () => {
         return (
-            <div className='flex flex-col w-80'>
+            <div className='text-white flex flex-col w-full items-center p-2'>
                 <p>
-                    <span className='font-light text-sm'>Name: </span>
-                    <span>{parsedAccount?.name}</span>
+                    <span className='font-bold text-normal'>Nombre: </span>
+                    <span className="font-light text-sm">{parsedAccount?.name}</span>
                 </p>
                 <p>
-                    <span className='font-light text-sm'>Email: </span>
-                    <span>{parsedAccount?.email}</span>
+                    <span className='font-bold text-normal'>Email: </span>
+                    <span className="font-light text-sm">{parsedAccount?.email}</span>
                 </p>
                 <button
                     className='border border-black rounded-lg mt-6 py-3'
@@ -89,10 +91,24 @@ function MyAccount() {
     const renderView = () => view === 'edit-user-info' ? renderEditUserInfo() : renderUserInfo()
 
     return (
-        <Layout>
-            <h1 className="font-medium text-xl text-center mb-6 w-80">My account</h1>
-            {renderView()}
-        </Layout>
+        <div className="lay w-screen h-auto min-h-pages py-14 px-20 flex flex-row items-star justify-center gap-x-40 bg-black">
+            <div className="w-1/3 flex flex-col items-center">
+                <h1 className="w-full p-3 text-white font-medium text-xl text-center mb-6 border-b">Mi Cuenta</h1>
+                {renderView()}
+            </div>
+            <div className="w-2/3">
+                <h1 className="w-full p-3 border-b text-white font-medium text-xl text-center mb-6 ">Mis Compras</h1>
+                <div className="w-full flex flex-wrap justify-center gap-6 ">
+                    {context.order.map((order, index) => (
+                        <OrdersCard
+                            key={order.id}
+                            totalPrice={order.totalPrice} 
+                            totalProduct={order.totalProduct} 
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
     )
 }
   

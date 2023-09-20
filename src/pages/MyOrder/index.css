@@ -1,0 +1,9 @@
+.descuento {
+    transition: all .3s ease-in-out;
+    border: solid 1px #161616;
+}
+
+.descuento:hover {
+    box-shadow: 0 0 10px #5a5a5a86;
+    border: solid 1px #ffffff15;
+}

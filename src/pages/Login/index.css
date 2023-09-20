@@ -1,0 +1,17 @@
+.rs {
+    transition: all .3s ease-in-out;
+}
+
+.rs:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 6px 4px #1515156b;
+}
+
+.login {
+    transition: all .3s ease-in-out;
+}
+
+.login:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 6px 4px #1515156b;
+}

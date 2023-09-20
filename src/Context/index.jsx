@@ -52,6 +52,7 @@ export const ShoppingCartProvider = ({children}) => {
 
     // Shopping Cart · Add products to cart
     const [cartProducts, setCartProducts] = useState([])
+    console.log(cartProducts.length);
 
     // Shopping Cart · Order
     const [order, setOrder] =useState([])
@@ -77,7 +78,6 @@ export const ShoppingCartProvider = ({children}) => {
     }
     
     const filteredByCategory = (items, searchByCategory) => {
-        console.log("items: " + items.category );
         return items?.filter(item => item.category.name.toLowerCase().includes(searchByCategory?.toLowerCase()))
   }
 

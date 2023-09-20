@@ -1,5 +1,5 @@
 import './index.css';
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"; 
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -37,11 +37,6 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     <li className="px-1 mx-1 text-base rounded hover">
-                        <NavLink to='/my-orders'>
-                            My orders
-                        </NavLink>
-                    </li>
-                    <li className="px-1 mx-1 text-base rounded hover">
                         <NavLink 
                             to='/login'
                             onClick={() => handleSignOut()}>
@@ -49,7 +44,9 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     <li className="px-1 mx-1 text-base rounded">
-                        <FontAwesomeIcon icon={faCartShopping} className="icon-music"/> {context.cartProducts.length}
+                        <NavLink to='/my-orders/last'>
+                            <FontAwesomeIcon icon={faCartShopping} className="icon-music" /> {context.cartProducts.length}
+                        </NavLink>
                     </li>
                 </>
             )
@@ -62,9 +59,6 @@ const Navbar = () => {
                             onClick={() => handleSignOut()}>
                             Sign In
                         </NavLink>
-                    </li>
-                    <li className="px-1 mx-1 text-base rounded">
-                        <FontAwesomeIcon icon={faCartShopping} className="icon-music" /> {context.cartProducts.length}
                     </li>
                 </>
             )
@@ -80,8 +74,8 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li className="px-1 mx-1 text-base rounded hover">
-                    <NavLink to='/shoes' onClick={() => context.setSearchByCategory('shoes')}>
-                        Shoes
+                    <NavLink to='/shoes' onClick={() => context.setSearchByCategory('Clothes')}>
+                        Clothes
                     </NavLink>
                 </li>
                 <li className="px-1 mx-1 text-base rounded hover">
@@ -90,8 +84,8 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li className="px-1 mx-1 text-base rounded hover">
-                    <NavLink to='/furniture' onClick={() => context.setSearchByCategory('furniture')}>
-                        Furniture
+                    <NavLink to='/furniture' onClick={() => context.setSearchByCategory('shoes')}>
+                        Shoes
                     </NavLink>
                 </li>
             </ul>

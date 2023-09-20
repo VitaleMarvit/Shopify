@@ -3,6 +3,7 @@ import { useContext } from "react"
 import { ShoppingCartContext } from "../../Context"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faEye, faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 const Card = (data) => {
 
@@ -25,35 +26,40 @@ const Card = (data) => {
 
     return (
         <div 
-            className=' flex-column w-1/4 bg-white border border-gray/80 rounded-lg'
+            className='card flex flex-col w-full bg-white border border-black/25 relative z-20 rounded-lg'
             // data-aos="fade-up" 
             // data-aos-offset="200"
         >
-            <figure className=' w-full p-4 m-auto relative text-center'>
-                <img src={data.data.images[0]} alt={data.data.title} className='w-full h-full object-cover rounded-lg relative z-10'/>
+            <figure className=' w-full h-3/5 p-4 m-auto relative text-center'>
+                <img src={data.data.images[0]} alt={data.data.title} className='image-swiper w-full h-full object-cover rounded-lg relative z-10'/>
             </figure>
             
-            <div className='px-4 h-2/5 flex flex-col'>
-                <h3 className='mb-3 text-black text-base font-light uppercase'>{data.data.title}</h3>
+            <div className='w-full px-4 h-1/5 flex flex-col justify-between items-start'>
+                <h3 className='mb-3 text-black text-base font-light uppercase text-left'>{data.data.title}</h3>
                 <p className='text-black text-xl mb-6'>${data.data.price}</p>
             </div>
 
-            <div className="w-full flex flex-row justify-around px-4 pb-4">
+            <div className="w-full h-1/4 flex flex-row justify-around items-end px-4 pb-4">
                 <button 
-                    className="agregar w-11/12 flex justify-center items-center mr-2 cursor-pointer bg-black rounded-lg"
+                    className="agregar w-11/12 h-3/5 flex justify-center items-center mr-2 cursor-pointer bg-black rounded-lg"
                     onClick={(event) => addProductsToCart(event, data.data)}
                 >
                     <FontAwesomeIcon icon={faCartShopping} className="text-sm pr-2 text-white"/> 
                     <p className="text-white text-xs">AGREGAR</p>
                 </button>
                 
-                <button 
-                    className="ver w-11/12 flex justify-center items-center cursor-pointer bg-white py-2 ml-2 rounded-lg border-2 border-black"
-                    onClick={() => showProduct(data.data)}
+                <Link 
+                    to={'/details'}
+                    className="ver w-11/12 h-3/5 flex justify-center items-center cursor-pointer bg-white py-2 ml-2 rounded-lg border-2 border-black"
                 >
-                    <FontAwesomeIcon icon={faEye} className="text-sm pr-2"/> 
-                    <p className="text-xs">VER</p>
-                </button>
+                    <button 
+                        className='flex'
+                        onClick={() => showProduct(data.data)}
+                    >
+                        <FontAwesomeIcon icon={faEye} className="text-sm pr-2"/> 
+                        <p className="text-xs">VER</p>
+                    </button>
+                </Link>
             </div>
         </div>
     )

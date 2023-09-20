@@ -25,20 +25,20 @@ const CheckoutSideMenu = () => {
         }
 
         context.setOrder([...context.order, orderToAdd])
-        context.setCartProducts([])
+        // context.setCartProducts([])
     }
 
     return (
-        <aside className={`${context.isCheckoutSideMenu? 'flex' : 'hidden'} checkout mr-10 flex flex-col fixed right-0 bg-white border border-solid border-gray shadow-detail rounded-lg p-6 mt-6`}>
+        <aside className={`${context.isCheckoutSideMenu? 'flex' : 'hidden'} checkout z-0 h-auto mr-10 flex flex-col fixed right-0 bg-white border border-solid border-gray shadow-detail rounded-lg p-6 mt-6`}>
             <div className='container-titulo flex justify-center items-center pb-3 mb-3 border-b'>
                 <p 
                     className='exit cursor-pointer absolute top-6 left-6'
                     onClick={() => context.closeCheckoutSideMenu()}>
                     <FontAwesomeIcon icon={faXmark} className="x"/>
                 </p> 
-                <h3 className='titulo text-center'>My Order</h3>
+                <h3 className='titulo text-center'>Mi Orden</h3>
             </div>
-            <div className=" overflow-y-scroll">
+            <div className=" overflow-y-scroll text-black">
                 {
                     context.cartProducts.map(product => (
                         <OrderCard 
@@ -61,7 +61,7 @@ const CheckoutSideMenu = () => {
                     <button 
                         className="bg-slate-900 text-white py-2 px-4 text-sm mt-2 rounded-md w-full" 
                         onClick={() => handleCheckOut()}
-                    >Checkout</button>
+                    >Ver Carrito</button>
                 </Link>
             </div>
         </aside>

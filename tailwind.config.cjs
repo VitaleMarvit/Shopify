@@ -9,7 +9,8 @@ export default {
       backgroundColor: {
         'black': '#010101',
         'grey': '#161616',
-        'transp': '#515151'
+        'transp': '#515151',
+        'login': '#0a0a0a'
       },
       boxShadow: {
         'shadow-navbar': '0 0 10px #0b0e2b',
@@ -17,15 +18,21 @@ export default {
         'detail': '0 0 5px #989898',
       },
       borderColor: {
-        'gray': '#d6d6d6'
+        'gray': '#d6d6d6',
       },
       width: {
-        'side': '12vw'
+        'side': '12vw',
+        'ordenes': '45%'
       },
       height: {
         'nav': '10vh',
         'card': '45vh',
+        'ofertas': '55vh',
         'footer': '30vh',
+        'pages': '90vh'
+      },
+      minHeight: {
+        'pages': '60vh'
       },
       textColor: {
         'category': '#00a650'

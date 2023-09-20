@@ -10,7 +10,19 @@ import sales from '../../assets/sale.jpg';
 import local from '../../assets/local.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTruck, faCreditCard, faShieldHalved, faEye } from '@fortawesome/free-solid-svg-icons'
-import { faFacebook, faTiktok, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
+
+import React, { useRef, useState } from "react";
+// Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+
+// Swiper modules
+import { Pagination, Navigation } from "swiper/modules";
 
 function Home() {
     const context = useContext(ShoppingCartContext)
@@ -19,7 +31,9 @@ function Home() {
         if (context.filteredItems?.length > 0) {
           return (
             context.filteredItems?.slice(0,10).map(item => (
-              <Card key={item.id} data={item} />
+              <SwiperSlide >
+                <Card key={item.id} data={item} />
+              </SwiperSlide>
             ))
           )
         } else {
@@ -30,7 +44,6 @@ function Home() {
       }
 
     const imagenes = context.items;
-    console.log(imagenes);
 
     return (
         <Layout>
@@ -68,14 +81,24 @@ function Home() {
             <div className="w-11/12 flex h-auto justify-center flex-col pt-20 pb-2">
               <h2 className="text-white text-xl text-center tracking-subTitles underline-offset-2 mb-8">OFERTAS</h2>
               
-              <div className="w-auto h-full relative flex gap-5 justify-center items-center overflow-hidden">
-                {/* <div className='side w-side h-full bg-white/30 absolute left-0 backdrop-blur-sm'></div> */}
-                {renderView()}
-                {/* <div className='side w-side h-full bg-white/30 absolute right-0 backdrop-blur-sm'></div> */}
+              <div className="w-auto h-ofertas relative flex flex-row justify-center items-center overflow-hidden">
+                <Swiper
+                  slidesPerView={4}
+                  spaceBetween={30}
+                  loop={true}
+                  navigation={true}
+                  pagination={{
+                    clickable: true
+                  }}
+                  modules={[Pagination, Navigation]}
+                  className="mySwiper"
+                >
+                  {renderView()}
+                </Swiper>
               </div>
             </div>
 
-            <div className="w-11/12 h-auto flex flex-row gap-10 pt-20 pb-2">
+            <div className="w-11/12 h-auto flex flex-row gap-10 pt-20 pb-2 z-20 relative">
               <div className="w-1/3 relative flex justify-center items-center overflow-hidden cursor-pointer">
                 {/* <img src={imagenes?.[100].images} className="imagenes"/> */}
                 <p className="text-white absolute text-3xl drop-shadow-drop">CLOTHES</p>
@@ -95,8 +118,20 @@ function Home() {
             <div className="w-11/12 flex h-auto justify-center flex-col pt-20 pb-2">
               <h2 className="text-white text-xl text-center tracking-subTitles underline-offset-2 mb-8">PRODUCTOS RECOMENDADOS</h2>
               
-              <div className="w-auto h-full relative flex gap-5 justify-center items-center overflow-hidden ">
+              <div className="w-auto h-card relative flex gap-5 justify-center items-center overflow-hidden ">
+                <Swiper
+                  slidesPerView={4}
+                  spaceBetween={30}
+                  loop={true}
+                  pagination={{
+                    clickable: true
+                  }}
+                  navigation={true}
+                  modules={[Pagination, Navigation]}
+                  // className="mySwiper"
+                >
                   {renderView()}
+                </Swiper>
               </div>
             </div>
 
@@ -139,72 +174,6 @@ function Home() {
             <div>
               <h1 className='text-white text-5xl tracking-frase font-oswald pt-36 pb-36'>COMPRAR NUNCA FUE TAN FACIL.</h1>
             </div>
-
-            <div className='w-full h-footer bg-white'>
-              <div className='w-11/12 h-full py-10 mx-auto flex items-start justify-center'>
-                <a className="w-1/4 font-oswald text-3xl tracking-widest font-normal mr-6 " href='/'>SHOPIFY</a>
-
-                <div className='w-1/4'>
-                  <ul className='flex flex-col gap-4'>
-                    <p className='text-xl tracking-subTitles'>Menú</p>
-
-                    <li className='footer-menu text-gray-700 text-base font-light'>
-                      <NavLink to='/electronics' onClick={() => context.setSearchByCategory('electronics')}>
-                        Clothes
-                      </NavLink>
-                    </li>
-                    
-                    <li className='footer-menu text-gray-700 text-base font-light'>
-                      <NavLink to='/electronics' onClick={() => context.setSearchByCategory('electronics')}>
-                        Electronics
-                      </NavLink>
-                    </li>
-                    
-                    <li className='footer-menu text-gray-700 text-base font-light'>
-                      <NavLink to='/shoes' onClick={() => context.setSearchByCategory('shoes')}>
-                        Shoes
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className='w-1/4 flex flex-col gap-4'>
-                  <p className='text-xl tracking-subTitles'>Contactános</p>
-
-                  <a href='/' className='text-base font-light'>ventas@shopify.com.ar</a>
-
-                  <p className='text-base font-light'>Aristides Villanueva 403, Mendoza. AR.</p>
-                </div>
-                
-                <div className='w-1/4 flex flex-col gap-4'>
-                  <p className='text-xl tracking-subTitles'>Redes Sociales</p>
-
-                  <div className='flex gap-4'>
-                    <a href='/'>
-                      <FontAwesomeIcon icon={faFacebook} className="rrss p-2 text-white text-2xl bg-black rounded-full"/> 
-                    </a>
-                    
-                    <a href='/'>
-                      <FontAwesomeIcon icon={faInstagram} className="rrss p-2 text-white text-2xl bg-black rounded-full"/> 
-                    </a>
-                    
-                    <a href='/'>
-                      <FontAwesomeIcon icon={faTiktok} className="rrss p-2 text-white text-2xl bg-black rounded-full"/> 
-                    </a>
-                    
-                    <a href='/'>
-                      <FontAwesomeIcon icon={faTwitter} className="rrss p-2 text-white text-2xl bg-black rounded-full"/> 
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className='w-full h-auto bg-white flex flex-col gap-2 justify-center items-center pb-8 text-sm font-light tracking-subTitles text-gray-600'>
-              <p>© SHOPIFY - 2023.</p>
-              <p>Diseñado y Desarrollado por<a href='https://www.linkedin.com/in/mariano-vitale-tasso/' target='_blank' className='mariano py-1 px-2 rounded-lg font-normal text-black tracking-normal text-base'>Mariano Vitale</a></p>
-            </div>
-            <DetailCards data = {context.items}/>
         </Layout>
     )
     

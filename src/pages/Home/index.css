@@ -23,6 +23,37 @@
     box-shadow: 0 0 10px #ffffff31;
 }
 
+.swiper {
+    height: 100%;
+    z-index: 10;
+    position: relative;
+}
+
+.swiper-slide {
+    height: 90%;
+    display: flex !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #fff !important;
+    background-color: black;
+}
+
+.swiper-button-prev:after, .swiper-button-next:after {
+    font-size: 20px !important;
+}
+
+.swiper-pagination {
+    display: none;
+}
+
+
+.swiper-wrapper {
+    align-items: center;
+    column-gap: 2.5%;
+}
+
 .footer-menu {
     transition: all .3s ease-in-out;
 }
