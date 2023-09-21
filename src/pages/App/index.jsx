@@ -30,13 +30,12 @@ const AppRoutes = () => {
   const isUserSignOut = context.signOut || parsedSignOut
 
   let routes = useRoutes([ 
-    {path: '/', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items} /> : <Navigate replace to={'/login'} />},
-    {path: '/shoes', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
-    {path: '/electronics', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
-    {path: '/furniture', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
-    {path: '/deathmask', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
-    {path: '/others', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
-    {path: '/details', element: <DetailCards />},
+    {path: '/Shopify', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items} /> : <Navigate replace to={'/login'} />},
+    {path: '/Shopify/shoes', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
+    {path: '/Shopify/electronics', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
+    {path: '/Shopify/furniture', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
+    {path: '/Shopify/others', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
+    {path: '/Shopify/details', element: <DetailCards />},
     {path: '/my-account', element: <MyAccount />},
     {path: '/ver-detalle', element: <VerDetalle />},
     {path: '/my-order', element: <MyOrder />},

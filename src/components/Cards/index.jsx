@@ -49,7 +49,7 @@ const Card = (data) => {
                 </button>
                 
                 <Link 
-                    to={'/details'}
+                    to={'/Shopify/details'}
                     className="ver w-11/12 h-3/5 flex justify-center items-center cursor-pointer bg-white py-2 ml-2 rounded-lg border-2 border-black"
                 >
                     <button 

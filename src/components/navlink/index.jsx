@@ -69,22 +69,22 @@ const Navbar = () => {
         <nav className="w-screen h-nav flex fixed z-50 top-0 justify-between bg-black py-4 px-6 text-white font-jost font-light">
             <ul className="flex justify-between items-center">
                 <li className=" font-oswald text-2xl tracking-widest font-normal mr-6 ">
-                    <NavLink to={`${isUserSignOut ? '/login' : '/'}`}>
+                    <NavLink to={`${isUserSignOut ? '/login' : '/Shopify'}`}>
                         SHOPIFY
                     </NavLink>
                 </li>
                 <li className="px-1 mx-1 text-base rounded hover">
-                    <NavLink to='/shoes' onClick={() => context.setSearchByCategory('Clothes')}>
+                    <NavLink to='/Shopify/shoes' onClick={() => context.setSearchByCategory('Clothes')}>
                         Clothes
                     </NavLink>
                 </li>
                 <li className="px-1 mx-1 text-base rounded hover">
-                    <NavLink to='/electronics' onClick={() => context.setSearchByCategory('electronics')}>
+                    <NavLink to='/Shopify/electronics' onClick={() => context.setSearchByCategory('electronics')}>
                         Electronics
                     </NavLink>
                 </li>
                 <li className="px-1 mx-1 text-base rounded hover">
-                    <NavLink to='/furniture' onClick={() => context.setSearchByCategory('shoes')}>
+                    <NavLink to='/Shopify/furniture' onClick={() => context.setSearchByCategory('shoes')}>
                         Shoes
                     </NavLink>
                 </li>
