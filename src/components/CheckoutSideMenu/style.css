@@ -1,6 +1,6 @@
 .checkout {
     width: 20vw;
-    height: 85vh;
+    box-shadow: 0 0 20px #000000ca;
 }
 
 .x {

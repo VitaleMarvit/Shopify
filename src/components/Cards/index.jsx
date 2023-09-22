@@ -21,12 +21,11 @@ const Card = (data) => {
         context.closeProductDetail()
         context.setCount(context.count + 1);
         context.setCartProducts([...context.cartProducts, productData]);
-        console.log(context.isCheckoutSideMenu);
     }
 
     return (
         <div 
-            className='card flex flex-col w-full bg-white border border-black/25 relative z-20 rounded-lg'
+            className='card flex flex-col w-full bg-white border border-black/25 relative z-30 rounded-lg'
             // data-aos="fade-up" 
             // data-aos-offset="200"
         >
@@ -40,7 +39,7 @@ const Card = (data) => {
             </div>
 
             <div className="w-full h-1/4 flex flex-row justify-around items-end px-4 pb-4">
-                <button 
+                <button  
                     className="agregar w-11/12 h-3/5 flex justify-center items-center mr-2 cursor-pointer bg-black rounded-lg"
                     onClick={(event) => addProductsToCart(event, data.data)}
                 >

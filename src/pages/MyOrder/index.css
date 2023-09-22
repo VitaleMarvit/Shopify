@@ -1,6 +1,17 @@
+.comprar {
+    transition: all .3s ease-in-out;
+    border: solid 1px #161616;
+}
+
+.comprar:hover {
+    box-shadow: 0 0 10px #5a5a5a86;
+    border: solid 1px #ffffff15;
+}
+
 .descuento {
     transition: all .3s ease-in-out;
     border: solid 1px #161616;
+    background-color: #a7a7a7bc;
 }
 
 .descuento:hover {

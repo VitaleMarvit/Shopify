@@ -1,7 +1,6 @@
 import './index.css'
 import { Layout } from "../../components/Layout"
 import { Card } from "../../components/Cards"
-import { NavLink } from "react-router-dom";
 import { useContext } from "react"
 import { DetailCards } from "../../components/Details";
 import { ShoppingCartContext } from "../../Context";
@@ -23,25 +22,26 @@ import "swiper/css/navigation";
 
 // Swiper modules
 import { Pagination, Navigation } from "swiper/modules";
+import { Link } from 'react-router-dom';
 
 function Home() {
     const context = useContext(ShoppingCartContext)
 
     const renderView = () => {
-        if (context.filteredItems?.length > 0) {
-          return (
-            context.filteredItems?.slice(0,10).map(item => (
-              <SwiperSlide >
-                <Card key={item.id} data={item} />
-              </SwiperSlide>
-            ))
-          )
-        } else {
-          return (
-            <div>We don't have anything :(</div>
-          )
-        }
+      if (context.filteredItems?.length > 0) {
+        return (
+          context.filteredItems?.slice(0,10).map(item => (
+            <SwiperSlide >
+              <Card key={item.id} data={item} />
+            </SwiperSlide>
+          ))
+        )
+      } else {
+        return (
+          <div>We don't have anything :(</div>
+        )
       }
+    }
 
     const imagenes = context.items;
 
@@ -52,7 +52,7 @@ function Home() {
             <div className=" w-full h-auto bg-grey flex justify-around py-8">
               <div className="flex items-center">
                 <FontAwesomeIcon icon={faTruck} className=" text-gray-300 text-3xl pr-4"/> 
-
+ 
                 <div className="text-white">
                   <h3 className=" text-lg font-light4">Enviós Gratis</h3>
                   <p className=" text-base font-light4">En compras superiores a $60.000</p>
@@ -99,20 +99,20 @@ function Home() {
             </div>
 
             <div className="w-11/12 h-auto flex flex-row gap-10 pt-20 pb-2 z-20 relative">
-              <div className="w-1/3 relative flex justify-center items-center overflow-hidden cursor-pointer">
-                {/* <img src={imagenes?.[100].images} className="imagenes"/> */}
-                <p className="text-white absolute text-3xl drop-shadow-drop">CLOTHES</p>
-              </div>
+              <Link to='/Shopify/clothes' className="w-1/3 relative flex justify-center items-center overflow-hidden cursor-pointer"> 
+                  <img src={imagenes?.[100].images} className="imagenes"/>
+                  <p className="text-white absolute text-3xl drop-shadow-drop">CLOTHES</p>
+              </Link>
               
-              <div className="w-1/3 relative flex justify-center items-center overflow-hidden cursor-pointer">
-                {/* <img src={imagenes?.[30].images} className="imagenes"/> */}
-                <p className="text-white absolute text-3xl drop-shadow-drop">ELECTRONICS</p>
-              </div>
+              <Link to='/Shopify/electronics' className="w-1/3 relative flex justify-center items-center overflow-hidden cursor-pointer">
+                  <img src={imagenes?.[30].images} className="imagenes"/>
+                  <p className="text-white absolute text-3xl drop-shadow-drop">ELECTRONICS</p>
+              </Link>
               
-              <div className="w-1/3 relative flex justify-center items-center overflow-hidden cursor-pointer">
-                {/* <img src={imagenes?.[134].images} className="imagenes"/> */}
-                <p className="text-white absolute text-3xl drop-shadow-drop">SHOES</p>
-              </div>
+              <Link to='/Shopify/shoes' className="w-1/3 relative flex justify-center items-center overflow-hidden cursor-pointer">
+                  <img src={imagenes?.[134].images} className="imagenes"/>
+                  <p className="text-white absolute text-3xl drop-shadow-drop">SHOES</p>
+              </Link>
             </div>
 
             <div className="w-11/12 flex h-auto justify-center flex-col pt-20 pb-2">

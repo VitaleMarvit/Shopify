@@ -1,10 +1,11 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { Link } from 'react-router-dom'
 import { ShoppingCartContext } from "../../Context"
 import './index.css'
 import { OrderCard } from "../../components/OrderCard"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faTag } from '@fortawesome/free-solid-svg-icons'
+import { totalPrice } from "../../utils"
 
 
 function MyOrder() {
@@ -20,6 +21,12 @@ function MyOrder() {
         index = context.order?.length -1
     }
 
+    
+    const vaciarCarrito = () => {
+        context.setCartProducts([])
+    }
+
+
     const carrito = () => {
         if (context.cartProducts?.length === 0) {
             return (
@@ -28,7 +35,7 @@ function MyOrder() {
         } else {    
             return (
                 <>
-                    <div className="w-full pb-2 pl-4 border-b text-white">
+                    <div className="w-full pb-2 px-4  text-white overflow-y-scroll">
                         {
                             context.order?.[index]?.products.map(product => (
                                 <OrderCard
@@ -42,23 +49,31 @@ function MyOrder() {
                             ))
                         }
                     </div>
-                    <div className="w-full flex flex-col gap-y-2 mt-2">
-                        <div>
+                    <div className="w-full flex flex-col border-t pt-4 gap-y-2 mt-2">
+                        <div className="flex justify-between pr-4">
                             <p className="font-light text-lg">Subtotal</p>
-                            <p></p>
+                            <p>${totalPrice(context.cartProducts)}</p>
                         </div>
                         
-                        <div className="flex justify-between border-b border-white/5 pb-2">
+                        <div className="flex justify-between border-b border-white/5 pr-4 pb-3">
                             <p className="font-light text-lg">Costo de envío</p>
                             <p className="font-light text-base">Gratis</p>
                         </div>
                         
-                        <div>
+                        <div className="flex justify-between pr-4">
                             <p className="font-normal text-2xl">Total</p>
-                            <p className="font-normal text-2xl"></p>
+                            <p className="font-normal text-2xl">${totalPrice(context.cartProducts)}</p>
                         </div>
                     </div>
-                    <button className="descuento w-full mt-6 flex justify-center gap-x-2 py-2 bg-grey ">
+
+                    <button     
+                        className="comprar w-full mt-6 flex justify-center gap-x-2 py-2 bg-grey"
+                        onClick={() => vaciarCarrito()}
+                    >
+                        <p>Comprar Ahora</p>
+                    </button>
+                    
+                    <button className="descuento w-full mt-3 flex justify-center gap-x-2 py-2 ">
                         <FontAwesomeIcon icon={faTag} className="text-2xl"/>
                         <p>¿Tenés un cupón de descuento?</p>
                     </button>
@@ -68,11 +83,11 @@ function MyOrder() {
     }
     
     return (
-        <div className="lay w-screen text-white h-pages flex flex-col items-center bg-black">
-            <div className="w-1/2 flex justify-center relative items-center my-14">
+        <div className="lay w-screen text-white min-h-pages flex flex-col items-center bg-black">
+            <div className="w-1/2 flex justify-center relative items-center mt-7 mb-8">
                 <h1 className="text-2xl">Mi Orden</h1>
             </div>
-            <div className="w-1/3 h-auto px-6 py-8 flex flex-col justify-center items-center bg-login border border-white overflow-y-scroll">
+            <div className="w-1/3 h-auto mb-12 px-6 py-8 flex flex-col justify-center items-center bg-login border border-white overflow-y-scroll">
                 {carrito()}
             </div>
         </div>

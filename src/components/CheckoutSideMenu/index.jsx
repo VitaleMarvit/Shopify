@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { Link } from 'react-router-dom'
 import { ShoppingCartContext } from '../../Context';
-import { OrderCard } from "../OrderCard";
 import { totalPrice } from "../../utils";
 import './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { OrdenCarrito } from "../OrdenCarrito";
 
 const CheckoutSideMenu = () => {
 
@@ -24,24 +24,29 @@ const CheckoutSideMenu = () => {
             totalPrice: totalPrice(context.cartProducts)
         }
 
+        context.closeCheckoutSideMenu()
+
         context.setOrder([...context.order, orderToAdd])
         // context.setCartProducts([])
     }
 
+    const productos = () => {
+        context.cartProducts.length === 1? `(1 Producto)`: `(${context.cartProducts.length} Productos)`
+    }
+
     return (
-        <aside className={`${context.isCheckoutSideMenu? 'flex' : 'hidden'} checkout z-0 h-auto mr-10 flex flex-col fixed right-0 bg-white border border-solid border-gray shadow-detail rounded-lg p-6 mt-6`}>
-            <div className='container-titulo flex justify-center items-center pb-3 mb-3 border-b'>
+        <aside className={`${context.isCheckoutSideMenu? 'flex' : 'hidden'} checkout z-40 h-auto mr-6 flex flex-col fixed right-0 bg-white rounded-sm mt-6`}>
+            <div className='container-titulo absolute'>
                 <p 
-                    className='exit cursor-pointer absolute top-6 left-6'
+                    className='exit cursor-pointer absolute top-1 left-1'
                     onClick={() => context.closeCheckoutSideMenu()}>
                     <FontAwesomeIcon icon={faXmark} className="x"/>
                 </p> 
-                <h3 className='titulo text-center'>Mi Orden</h3>
             </div>
-            <div className=" overflow-y-scroll text-black">
+            <div className="px-6 pt-8 overflow-y-scroll text-black border-b">
                 {
                     context.cartProducts.map(product => (
-                        <OrderCard 
+                        <OrdenCarrito 
                             key={product.id}
                             id={product.id}
                             title={product.title}
@@ -52,9 +57,9 @@ const CheckoutSideMenu = () => {
                     ))
                 }
             </div>
-            <div className="mt-2 relative bottom-0">
+            <div className="mt-2 px-6 pb-6 relative bottom-0">
                 <p className="flex justify-between">
-                    <span>Total:</span>
+                    <span>Total {context.cartProducts.length === 1? `(1 Producto)`: `(${context.cartProducts.length} Productos)`}:</span>
                     <span>${totalPrice(context.cartProducts)}</span>
                 </p>
                 <Link to="/my-orders/last">

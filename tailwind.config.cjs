@@ -29,7 +29,7 @@ export default {
         'card': '45vh',
         'ofertas': '55vh',
         'footer': '30vh',
-        'pages': '90vh'
+        'pages': '90vh',
       },
       minHeight: {
         'pages': '60vh'

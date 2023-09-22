@@ -1,0 +1,12 @@
+.container-image {
+    margin-top: 10vh;
+    height: 25vh;
+}
+
+.title-categorie {
+    backdrop-filter: blur(2px);
+}
+
+.imagenes-categorias {
+    object-fit: fill;
+}

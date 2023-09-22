@@ -68,7 +68,7 @@ function Login() {
                         <span className="font-light text-lg">Contraseña: </span>
                         <span>{parsedAccount?.password}</span>
                     </p>
-                    <Link to='/'>
+                    <Link to='/Shopify'>
                         <button 
                             className="login bg-white disabled:bg-gray-500 disabled:hover:transform disabled:text-gray-700 text-black w-full rounded-lg py-3 mt-4 mb-2"
                             onClick={() => handleSignIn()}
@@ -129,7 +129,7 @@ function Login() {
                         className="rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4 mb-4"
                     />
                 </div>
-                <Link to="/">
+                <Link to="/Shopify">
                     <button 
                         className="login bg-black text-white w-full rounded-lg py-3 mb-6"
                         onClick={() => creatreAnAccount()}    

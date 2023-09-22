@@ -1,4 +1,17 @@
+import { useContext, useRef, useState } from "react"
+import { ShoppingCartContext } from "../../Context"
+import { DetalleProducto } from "../../components/Detalle Producto";
+
 const VerDetalle = () => {
+    const context = useContext(ShoppingCartContext)
+    const currentPath = window.location.pathname;
+    let index = currentPath.substring(currentPath.lastIndexOf("/") + 1)
+    if (index === "last") {
+        index = context.order?.length -1
+    }
+
+    console.log(context.order);
+
     return (
         <div className="lay w-screen h-auto min-h-pages py-14 px-20 flex flex-row items-star justify-center gap-x-40 bg-black">
             <div className="w-1/3 flex flex-col items-center">
@@ -33,9 +46,19 @@ const VerDetalle = () => {
             </div>
             <div className="w-2/3">
                 <h1 className="w-full p-3 border-b text-white font-medium text-xl text-center mb-6 ">Productos</h1>
-                <div className="w-full flex flex-wrap justify-center gap-6 ">
-                    
-                </div>
+                <div className="w-full pb-2 px-4  text-white overflow-y-scroll">
+                        {
+                            context.order?.[index]?.products.map(order => (
+                                <DetalleProducto
+                                    key={order.id} 
+                                    id={order.id}
+                                    title={order.title}
+                                    imageUrl={order.images?.[0]}
+                                    price={order.price}
+                                />
+                            ))
+                        }
+                    </div>
             </div>
         </div>
     )

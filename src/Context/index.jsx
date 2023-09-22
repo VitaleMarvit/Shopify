@@ -52,11 +52,10 @@ export const ShoppingCartProvider = ({children}) => {
 
     // Shopping Cart · Add products to cart
     const [cartProducts, setCartProducts] = useState([])
-    console.log(cartProducts.length);
 
     // Shopping Cart · Order
     const [order, setOrder] =useState([])
-
+    console.log(order);
     // Get products
     const [items, setItems] = useState(null);
     const [filteredItems, setFilteredItems] = useState(null)

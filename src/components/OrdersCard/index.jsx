@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const OrdersCard = (props) => {
 
-    const { totalPrice, totalProduct } = props
+    const { totalPrice, totalProduct, image } = props
     
     const numero = Math.random()
     const aleatorio = Math.ceil(numero * 12421)
@@ -16,8 +16,6 @@ const OrdersCard = (props) => {
     
     const fechaFormateada = `${dia}/${mes}/${año}`;
 
-    console.log(fechaFormateada);
-
     return (
         <div className="w-ordenes bg-login h-auto p-4 flex flex-col gap-y-6 text-white items-center border border-white">
             <div className="w-full flex justify-between font-light text-sm">
@@ -25,12 +23,12 @@ const OrdersCard = (props) => {
                 <p>{fechaFormateada}</p>
             </div>
 
-            <div className="w-full flex gap-x-6">
-                <div>
-                    <img />
-                    <p className="text-sm">PRODUCTOS</p>
+            <div className="w-full flex ">
+                <div className="w-2/4 relative">
+                    <img className="w-5/6 h-full" src={image}/>
+                    <p className="text-sm absolute bg-login py-1 px-2 bottom-0">{totalProduct} PRODUCTOS</p>
                 </div>
-                <div className="flex flex-col items-start gap-y-2">
+                <div className="w-2/4 flex flex-col items-start gap-y-2">
                     <div className="flex gap-x-2 items-center">
                         <p>Pago:</p>
                         <p className="font-light text-sm">Pagado</p>
@@ -46,7 +44,7 @@ const OrdersCard = (props) => {
                         <p className="font-light text-sm">${totalPrice},00</p>
                     </div>
 
-                    <Link to="/ver-detalle" className="text-sm font-light">VER DETALLE</Link>
+                    <p className="text-sm font-light">VER DETALLE</p>
                 </div>
             </div>
 

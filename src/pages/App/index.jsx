@@ -14,6 +14,9 @@ import { ShoppingCartContext, ShoppingCartProvider, initializeLocalStorage } fro
 import { Footer } from '../../components/Footer';
 import { VerDetalle } from '../Productos';
 import { DetailCards } from '../../components/Details';
+import { Clothes } from '../Categories/clothes';
+import { Electronics } from '../Categories/electronics';
+import { Shoes } from '../Categories/shoes';
 
 const AppRoutes = () => {
   const context = useContext(ShoppingCartContext)
@@ -31,10 +34,11 @@ const AppRoutes = () => {
 
   let routes = useRoutes([ 
     {path: '/Shopify', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items} /> : <Navigate replace to={'/login'} />},
-    {path: '/Shopify/shoes', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
-    {path: '/Shopify/electronics', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
-    {path: '/Shopify/furniture', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
-    {path: '/Shopify/others', element: hasUserAnAccount && !isUserSignOut ? <Home data = {context.items}/> : <Navigate replace to={'/login'} />},
+    
+    {path: '/Shopify/clothes', element: hasUserAnAccount && !isUserSignOut ? <Clothes data = {context.items}/> : <Navigate replace to={'/login'} />},
+    {path: '/Shopify/electronics', element: hasUserAnAccount && !isUserSignOut ? <Electronics data = {context.items}/> : <Navigate replace to={'/login'} />},
+    {path: '/Shopify/shoes', element: hasUserAnAccount && !isUserSignOut ? <Shoes data = {context.items}/> : <Navigate replace to={'/login'} />},
+    
     {path: '/Shopify/details', element: <DetailCards />},
     {path: '/my-account', element: <MyAccount />},
     {path: '/ver-detalle', element: <VerDetalle />},

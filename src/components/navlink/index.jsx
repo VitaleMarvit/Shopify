@@ -74,7 +74,7 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li className="px-1 mx-1 text-base rounded hover">
-                    <NavLink to='/Shopify/shoes' onClick={() => context.setSearchByCategory('Clothes')}>
+                    <NavLink to='/Shopify/clothes' onClick={() => context.setSearchByCategory('Clothes')}>
                         Clothes
                     </NavLink>
                 </li>
@@ -84,7 +84,7 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li className="px-1 mx-1 text-base rounded hover">
-                    <NavLink to='/Shopify/furniture' onClick={() => context.setSearchByCategory('shoes')}>
+                    <NavLink to='/Shopify/shoes' onClick={() => context.setSearchByCategory('shoes')}>
                         Shoes
                     </NavLink>
                 </li>
